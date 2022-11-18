@@ -15,6 +15,8 @@ router.get('/', async (req,res) =>{
 });
 
 
+
+
 router.get('/:id', async(req, res)=>{
     const log = await Login.findById(req.params.id);
     res.json(log);
@@ -71,7 +73,6 @@ router.post('/login', async(req,res)=>{
         status:"error", error:"invalid password"
     });
 
-
     
 
 });
@@ -98,15 +99,13 @@ router.post("/login-sesion",async(req,res)=>{
 
 
 
-
-
-
 router.put('/:id', async(req,res) =>{
     const {usuario,Contraseña,Gmail,rol} = req.body;
     const newLogin = {usuario,Contraseña,Gmail,rol};
     await Login.findByIdAndUpdate(req.params.id, newLogin);
     res.json('recibido');
 });
+
 
 router.delete('/:id', async (req,res) => {
     await Login.findByIdAndRemove(req.params.id);

@@ -18,6 +18,8 @@ app.use(express.json());
 //rutas 
 app.use('/api/tasks',require('./routes/task.routes'));
 
+const customerRoutes = require('./routes/Rutas.vista');
+app.use('/ruta', customerRoutes);
 
 //static files
 

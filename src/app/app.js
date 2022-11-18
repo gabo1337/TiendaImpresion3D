@@ -24,7 +24,15 @@ class App extends Component{
         })
         .then(res => res.json())
         .then(data =>{
-            console.log(data)
+            console.log(data);
+            if (data.message == "correcto"){
+                alert("login success")
+                window.localStorage.setItem("token",data.data);
+                window.location.href = "./userDetails";
+
+            }else{
+                alert(data.message)
+            }
             this.setState({usuario:'',Contraseña:''});
         })        
         .catch(err => console.error(err));
@@ -48,7 +56,7 @@ class App extends Component{
                     <span class="icon_mail"></span>
                 </div>
                 <div class="input__item">
-                                <input name="Contraseña" onChange={this.hundlechange} type="text" placeholder="Password" value={this.state.Contraseña}></input>
+                                <input name="Contraseña" onChange={this.hundlechange} type="password" placeholder="Password" value={this.state.Contraseña}></input>
                                 <span class="icon_lock"></span>
                             </div>
                 <button type="submit" class="site-btn">Login Now</button>
